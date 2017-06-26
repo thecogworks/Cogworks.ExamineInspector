@@ -1,0 +1,104 @@
+﻿<div class="row">
+    <div class="span12">
+        <ul class="field-summary">
+            <li>
+                <label>
+                    <localize key="examineInspector_noOfFields">Number of fields</localize>: <span class="text-success">{{dashboardController.overview.selectedIndexSummary.data.noOfFields}}</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <localize key="examineInspector_noOfDocuments">Number of documents</localize>: <span class="text-success">{{dashboardController.overview.selectedIndexSummary.data.noOfDocuments}}</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <localize key="examineInspector_noOfTerms">Number of terms</localize>: <span class="text-success">{{dashboardController.overview.selectedIndexSummary.data.noOfTerms}}</span>
+                </label>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="span12 terms-form-container">
+        <form id="termsForm">
+            <div class="row">
+                <div class="span3">
+                    <label>
+                        <localize key="examineInspector_noOfTermsToShow">No. of terms to show</localize>
+                    </label>
+                    <p><localize key="examineInspector_selectAvailableFields">Select available fields below</localize></p>
+                </div>
+                <div class="span9">
+                    <input type="number" ng-model="dashboardController.overview.termsToShow" min="1" max="50" required />
+                    <button type="submit" ng-disabled="!dashboardController.overview.haveSelectedFields" ng-class="{'disabled' : !dashboardController.overview.haveSelectedFields}" ng-click="dashboardController.overview.getFieldsForTerms()" class="btn">
+                        <span>
+                            <localize key="examineInspector_display">Display</localize>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span3 available-fields-text-container">
+        <label class="available-fields">
+            <localize key="examineInspector_availableFields">Available fields</localize>
+        </label>
+        <label class="names">
+            <localize key="examineInspector_namesField">Names</localize>
+        </label>
+    </div>
+
+    <div class="span3 available-fields-list">
+        <!-- Table -->
+        <table class="table-condensed table-striped">
+            <thead>
+                <tr>
+                    <td>
+                        <input type="checkbox" ng-click="dashboardController.overview.selectAll($event)">
+                    </td>
+                    <td><localize key="examineInspector_selectAll">Select all</localize></td>
+                </tr>
+            </thead>
+            <!-- Display Results -->
+            <tbody ng-show="dashboardController.overview.selectedIndexSummary.fields.length > 0">
+                <tr ng-repeat="field in dashboardController.overview.selectedIndexSummary.fields" ng-class="{selected:field.selected}">
+                    <td>
+                        <input type="checkbox" ng-change="dashboardController.overview.setSelectedFields(field)" ng-model="field.selected" no-dirty-check>
+                    </td>
+                    <td>{{ field.label }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="span6 top-terms-results">
+        <div ng-show="dashboardController.overview.haveFieldsToShow">
+            <label>
+                <localize key="examineInspector_showingTopTerms">Showing Top Terms</localize>
+            </label>
+
+            <table class="table-bordered table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Rank</th>
+                        <th>Field</th>
+                        <th>Text</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="term in dashboardController.overview.topTerms">
+                        <td>{{$index+1}}</td>
+                        <td>{{term.DocFreq}}</td>
+                        <td>{{term.Term.field}}</td>
+                        <td>{{term.Term.text}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

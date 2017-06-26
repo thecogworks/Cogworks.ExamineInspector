@@ -1,0 +1,151 @@
+﻿<div id="searchTab">
+
+    <div class="row">
+        <div class="span6">
+
+            <form name="searchForm" ng-submit="dashboardController.search.executeSearch()">
+                <div class="row">
+
+                    <div class="span6">
+                        <label class="analiser"><localize key="examineInspector_analyser">Analyser</localize> <span>*</span></label>
+                        <label class="default-field"><localize key="examineInspector_defaultField">Default field</localize> <span>*</span></label>
+                        <label class="lucene-query"><localize key="examineInspector_luceneQuery">Enter lucene query here</localize> <span>*</span></label>
+                    </div>
+
+                    <div class="span6">
+                        <select name="selectAnalyser"
+                                ng-options="item for item in dashboardController.search.analysers"
+                                ng-model="dashboardController.search.selectedAnalyser"
+                                ng-change="dashboardController.search.analyserChanged()" required>
+                            <option value="" selected>
+                                <localize key="examineInspector_chooseAnalyserOption">-- Select Analyser --</localize>
+                            </option>
+                        </select>
+                        <select name="selectField"
+                                ng-options="field as field.label for field in dashboardController.overview.selectedIndexSummary.fields"
+                                ng-model="dashboardController.search.defaultField" required>
+                            <option value="" selected>
+                                <localize key="examineInspector_chooseDefaultField">-- Select default field --</localize>
+                            </option>
+                        </select>
+                        <textarea ng-model="dashboardController.search.searchQuery" required></textarea>
+
+                        <button type="submit" ng-disabled="searchForm.$invalid" ng-class="{'disabled' : searchForm.$invalid}" class="btn">
+                            <span>
+                                <localize key="examineInspector_search">Search</localize>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row" ng-class="{'hidden': !dashboardController.search.hasSearchResults}">
+        <div class="span12">
+            <div class="checkbox-container">
+                <label class="fields-to-display"><localize key="examineInspector_fieldsToDisplay">Fields to display</localize></label>
+                <label ng-repeat="field in dashboardController.search.fieldsToDisplay.fields" for="{{field.label}}">
+                    <input ng-model="field.selected" ng-change="dashboardController.search.fieldChanged(field)" type="checkbox" class="{{field.label}}" />{{field.label}}
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span8">
+
+            <div ng-class="{'hidden': !dashboardController.search.showNoSearchResultsMesssage}">
+                <localize key="examineInspector_noResults">There are no results to show.</localize>
+            </div>
+
+            <div ng-class="{'hidden': !dashboardController.search.hasSearchResults}">
+
+                <label class="results">
+                    <localize key="examineInspector_results">Results:</localize>
+                </label>
+                <div class="more-info-container">
+
+                    <div class="more-info">
+                        <p>
+                            <localize key="examineInspector_moreInfo">Select row for more information</localize>
+                        </p>
+                    </div>
+
+                    <div class="arrows">
+                        <a class="arrow-left disabled" href="#" ng-click="dashboardController.search.horizontalScroll($event)"><</a>
+                        <a class="arrow-right" href="#" ng-click="dashboardController.search.horizontalScroll($event)">></a>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <table class="table-bordered table-condensed table-striped search-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th ng-repeat="(key, value) in dashboardController.search.searchResults[0].Fields track by $index" class="{{key | compress}}" ng-class="dashboardController.search.hideFieldFromSearchResults(key)">{{ key }}</th>
+                        </tr>
+                    </thead>
+                    <!-- Display Results -->
+                    <tbody>
+                        <tr ng-repeat="item in dashboardController.search.searchResults">
+                            <td ng-click="dashboardController.search.expand($event)">
+                                <div class="td-preview">
+                                    <i class="icon icon-navigation-right"><span>{{$index + 1}}</span></i>
+                                </div>
+                            </td>
+                            <td ng-click="dashboardController.search.expand($event)" ng-repeat="(key, value) in item.Fields track by $index" class="{{key | compress}}" ng-class="dashboardController.search.hideFieldFromSearchResults(key)">
+                                <div class="td-preview">{{value}}</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="span1"></div>
+        <div class="span3 document-info-container" data-docid="{{dashboardController.search.docId}}" ng-class="{'hidden': !dashboardController.search.hasDocument}">
+
+            <label class="results">
+                <localize key="examineInspector_documentInfo">Document Info:</localize>
+            </label>
+
+            <div class="more-info-container">
+
+                <div class="more-info">
+                    <p>
+                        <localize key="examineInspector_usingDocId">Using DocId:</localize> {{dashboardController.search.docId}}
+                    </p>
+                </div>
+                <div class="arrows">
+                    <a class="arrow-left disabled" href="#" ng-click="dashboardController.search.horizontalScroll($event)"><</a>
+                    <a class="arrow-right" href="#" ng-click="dashboardController.search.horizontalScroll($event)">></a>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <table class="table-bordered table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th ng-repeat="(key, value) in dashboardController.search.document.data.fields[0] track by $index">{{ key }}</th>
+                    </tr>
+                </thead>
+                <!-- Display Results -->
+                <tbody>
+                    <tr ng-repeat="item in dashboardController.search.document.data.fields">
+                        <td ng-repeat="(key, value) in dashboardController.search.document.data.fields[$index] track by $index">
+                            <div ng-show="dashboardController.search.renderDocumentInfo(value) == 'green'">
+                                <i class="icon icon-check color-green"></i>
+                            </div>
+                            <div ng-show="dashboardController.search.renderDocumentInfo(value) == 'red'">
+                                <i class="icon icon-delete color-red"></i>
+                            </div>
+                            <div ng-show="dashboardController.search.renderDocumentInfo(value) == 'none'">
+                                {{value}}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

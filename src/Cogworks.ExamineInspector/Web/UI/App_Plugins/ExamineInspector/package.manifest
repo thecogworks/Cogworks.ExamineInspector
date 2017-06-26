@@ -1,0 +1,10 @@
+{
+  "javascript": [
+    "~/App_Plugins/ExamineInspector/dashboard/resources/examineinspector.resources.js",
+    "~/App_Plugins/ExamineInspector/dashboard/filters/examineinspector.filters.js",
+    "~/App_Plugins/ExamineInspector/dashboard/examineinspector.controller.js"
+  ],
+  "css": [
+    "~/App_Plugins/ExamineInspector/dashboard/examineinspector.min.css"
+  ]
+}

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="en" intName="English" localName="english" lcid="1" culture="en-GB">
+  <creator>
+    <name>Ismail Mayat // Alejandro Ocampo @ The Cogworks</name>
+    <link>http://mydomain.com</link>
+  </creator>
+  <area alias="examineInspector">
+    <key alias="chooseIndexOption">Please select index option</key>
+    <key alias="selectIndexLabel">-- Select Index --</key>
+
+    <key alias="overview">Overview</key>
+    <key alias="viewing">Viewing: </key>
+    <key alias="path">Path: </key>
+    <key alias="noOfFields">Number of fields</key>
+    <key alias="noOfDocuments">Number of documents</key>
+    <key alias="noOfTerms">Number of terms</key>
+    <key alias="noOfTermsToShow">No. of terms to show</key>
+    <key alias="display">Display</key>
+    <key alias="availableFields">Available fields</key>
+    <key alias="namesField">Names</key>
+    <key alias="selectAll">Select All</key>
+    <key alias="showingTopTerms">Showing Top Terms</key>
+    <key alias="selectAvailableFields">Select available fields below</key>
+
+    <key alias="usingDocId">Using DocId:</key>
+    <key alias="results">Results:</key>
+    <key alias="moreInfo">Select row for more information</key>
+    <key alias="documentInfo">Document Info:</key>
+    <key alias="search">Search</key>
+    <key alias="indexFiles">Index files</key>
+    <key alias="analyse">Analyse</key>
+    <key alias="analyser">Analyser</key>
+    <key alias="defaultField">Default field</key>
+    <key alias="chooseAnalyserOption">-- Select Analyser --</key>
+    <key alias="chooseDefaultField">-- Select default field --</key>
+    <key alias="luceneQuery">Enter lucene query here</key>
+    <key alias="query">Query</key>
+    <key alias="fieldsToDisplay">Fields to display</key>
+    <key alias="selectFieldsToDisplay">-- Select Fields To Display --</key>
+    <key alias="noResults">There are no results to show.</key>
+
+    <key alias="totalIndexSize">Total Index Size:</key>
+    <key alias="fileName">File Name</key>
+    <key alias="fileSize">File Size</key>
+
+    <key alias="enterTextToAnalyse">Enter text to analyse here</key>
+    <key alias="generatedTokens">Generated Tokens</key>
+  </area>
+</language>

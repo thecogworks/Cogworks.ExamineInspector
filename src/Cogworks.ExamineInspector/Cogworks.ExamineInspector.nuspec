@@ -1,0 +1,25 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/thecogworks/examineinspector/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/thecogworks/examineinspector</projectUrl>
+    <iconUrl>https://www.thecogworks.co.uk</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>$copyright$</copyright>
+    <tags>Umbraco Search Examine Inspector</tags>
+    <dependencies>
+      <dependency id="UmbracoCms.Core" version="7.6.3" />
+      <dependency id="Examine" version="0.1.83" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="Web\UI\**\*.*" target="content" exclude="**\*.less;**\examineinspector.css" />
+    <file src="config\**\*.*" target="content\config" />
+  </files>
+</package>

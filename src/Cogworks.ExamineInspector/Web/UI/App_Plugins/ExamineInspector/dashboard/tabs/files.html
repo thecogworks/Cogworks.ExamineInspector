@@ -1,0 +1,29 @@
+﻿<div id="filesTab">
+    <div class="row">
+        <div class="span9">
+
+            <label>
+                <localize key="examineInspector_totalIndexSize">Total Index Size:</localize> <span>{{dashboardController.files.selectedIndexTotalFileSize}} Bytes </span>
+            </label>
+
+            <table class="table-bordered table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th><localize key="examineInspector_fileName">File Name</localize></th>
+                        <th><localize key="examineInspector_fileSize">File Size</localize></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="file in dashboardController.overview.selectedIndexSummary.data.indexFiles">
+                        <td>
+                            {{file.fileName}}
+                        </td>
+                        <td>
+                            {{file.fileSize}} bytes
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

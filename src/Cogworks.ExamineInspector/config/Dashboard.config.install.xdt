@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dashBoard xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <section alias="StartupDeveloperDashboardSection" xdt:Locator="Match(alias)">
+    <tab caption="Examine Inspector" xdt:Locator="Match(caption)" xdt:Transform="InsertIfMissing">
+      <control>/App_Plugins/ExamineInspector/dashboard/examineinspector.html</control>
+    </tab>
+  </section>
+</dashBoard>

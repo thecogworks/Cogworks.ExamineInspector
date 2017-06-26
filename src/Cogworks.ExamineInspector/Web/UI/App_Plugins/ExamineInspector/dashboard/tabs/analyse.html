@@ -1,0 +1,38 @@
+﻿<div id="analyseTab">
+    <div class="row">
+        <div class="span6">
+            <form name="analyseForm" ng-submit="dashboardController.analyse.executeAnalyser()">
+                <div class="row">
+                    <div class="span6">
+                        <label class="analyser"><localize key="examineInspector_analyser">Analyser</localize> <span>*</span></label>
+                        <label class="text-to-analyse"><localize key="examineInspector_enterTextToAnalyse">Enter text to analyse here</localize> <span>*</span></label>
+                    </div>
+
+                    <div class="span6">
+                        <select name="selectAnalyser"
+                                ng-options="item for item in dashboardController.analyse.analysers"
+                                ng-model="dashboardController.analyse.selectedAnalyser"
+                                ng-change="dashboardController.analyse.analyserChanged()" required>
+                            <option value="" selected>
+                                <localize key="examineInspector_chooseAnalyserOption">-- Select Analyser --</localize>
+                            </option>
+                        </select>
+
+                        <textarea ng-model="dashboardController.analyse.textToAnalyse" required></textarea>
+
+                        <button type="submit" ng-disabled="analyseForm.$invalid" ng-class="{'disabled' : analyseForm.$invalid}" class="btn">
+                            <span>
+                                <localize key="examineInspector_analyse">Analyse</localize>
+                            </span>
+                        </button>
+
+                        <div class="generated-tokens-container">
+                            <label><localize key="examineInspector_generatedTokens">Generated Tokens</localize></label>
+                            <textarea ng-model="dashboardController.analyse.analyseResults" readonly="readonly"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

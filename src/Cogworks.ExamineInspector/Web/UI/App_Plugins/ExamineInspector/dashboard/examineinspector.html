@@ -1,0 +1,60 @@
+<div id="examineInspector" ng-controller="ExamineInspector.Dashboard.DashboardController as dashboardController">
+    <div class="row">
+        <div class="span12">
+            <div ng-show="!dashboardController.dashboard.ready" class="umb-loader-wrapper">
+                <div class="umb-loader"></div>
+            </div>
+
+            <h3>Examine Inspector</h3>
+
+            <div class="select-index-container">
+                <label>
+                    <span style="font-weight: bold"> <localize key="examineInspector_viewing">Viewing:</localize> </span>
+                </label>
+                <select name="selectIndex"
+                        ng-options="item.indexName for item in dashboardController.dashboard.indexes"
+                        ng-model="dashboardController.dashboard.selectedIndex"
+                        ng-change="dashboardController.dashboard.indexChanged()" required>
+                    <option value="" selected>
+                        <localize key="examineInspector_chooseIndexOption">-- Select Index --</localize>
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12 tab-container">
+
+            <div ng-show="dashboardController.dashboard.indexPicked">
+
+                <label>
+                    <span> <localize key="examineInspector_path">Path:</localize></span>
+                </label>
+                <span>{{dashboardController.dashboard.selectedIndex.indexPath}}</span>
+
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#overview" data-toggle="tab"><localize key="examineInspector_overview">Overview</localize></a>
+                    </li>
+                    <li>
+                        <a href="#search" data-toggle="tab"><localize key="examineInspector_search">Search</localize></a>
+                    </li>
+                    <li>
+                        <a href="#files" data-toggle="tab"><localize key="examineInspector_indexFiles">Index files</localize></a>
+                    </li>
+                    <li>
+                        <a href="#analyse" data-toggle="tab"><localize key="examineInspector_analyse">Analyse</localize></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content" ng-show="dashboardController.dashboard.indexPicked">
+        <div class="tab-pane active" id="overview" ng-include="'../App_Plugins/ExamineInspector/dashboard/tabs/overview.html'"> </div>
+        <div class="tab-pane" id="search" ng-include="'../App_Plugins/ExamineInspector/dashboard/tabs/search.html'"> </div>
+        <div class="tab-pane" id="files" ng-include="'../App_Plugins/ExamineInspector/dashboard/tabs/files.html'"> </div>
+        <div class="tab-pane" id="analyse" ng-include="'../App_Plugins/ExamineInspector/dashboard/tabs/analyse.html'"></div>
+    </div>
+</div>
