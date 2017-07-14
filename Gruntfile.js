@@ -53,7 +53,7 @@ module.exports = function(grunt) {
                 src: [
                     releaseFilesDir + '**/*.*'
                 ],
-                dest: releaseDir + 'zip/' + pkg.name + '.v' + version + '.zip'
+                dest: releaseDir + 'zip/' + pkg.name + '.' + version + '.zip'
             }
         },
         umbracoPackage: {
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
                     author: pkg.author.name,
                     authorUrl: pkg.author.url,
                     readme: pkg.readme,
-                    outputName: pkg.name + '.v' + version + '.zip'
+                    outputName: pkg.name + '.' + version + '.zip'
                 }
             }
         },
@@ -82,7 +82,53 @@ module.exports = function(grunt) {
 					build: true
 				}
             }
-        }
+        },
+		bump: {	
+			options: {
+				files: ['package.json','src/Cogworks.ExamineInspector/Properties/AssemblyInfo.json'],
+				commit: false,
+				createTag: true,
+				tagName: '%VERSION%',
+				tagMessage: '%VERSION%',
+				push: false,
+				pushTo: 'origin',
+				globalReplace: true,
+				regExp: false
+			}
+			
+		},
+		msbuild: {
+			dev: {
+				src: ['src/Cogworks.ExamineInspector/Cogworks.ExamineInspector.csproj'],
+				options: {
+					projectConfiguration: 'Release',
+					targets: ['Clean', 'Rebuild'],
+					verbosity: 'quiet'
+				}
+			}
+		},
+		tag: {
+			options: {
+				tagName: '<%= version %>',
+				tagMsg: '<%= version %>'
+			}
+		},
+		git: {
+			commit: {
+				options: {
+					a: true,
+					m: 'Woot!! '
+				}
+			},
+			pushOrigin: {
+			  options: {
+				simple: {
+				  cmd: 'push',
+				  args: ['origin', 'master']
+				}
+			  }
+			}
+		}
     });
 
     grunt.loadNpmTasks('grunt-umbraco-package');
@@ -90,9 +136,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-nuget');
     grunt.loadNpmTasks('grunt-zip');
+	grunt.loadNpmTasks('grunt-bump');
+	grunt.loadNpmTasks('grunt-msbuild');
+	grunt.loadNpmTasks('grunt-tag');
+	grunt.loadNpmTasks('grunt-simple-git');
 
     grunt.registerTask('dev', ['copy', 'zip', 'umbracoPackage', 'nugetpack']);
-
-    grunt.registerTask('default', ['dev']);
+	
+	grunt.registerTask('default', ['bump','msbuild','git:commit','tag','git:pushOrigin','dev']);
 
 };

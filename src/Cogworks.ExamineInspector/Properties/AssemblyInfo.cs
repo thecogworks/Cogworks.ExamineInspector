@@ -9,13 +9,21 @@
 //------------------------------------------------------------------------------
 
 using System.Reflection;
+using Cogworks.ExamineInspector.Helpers;
 
-[assembly: AssemblyVersion("1.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.53606")]
-[assembly: AssemblyInformationalVersion("1.0.0")]
+[assembly: AssemblyVersion(GlobalAssemblyInfo.SimpleVersion)]
+[assembly: AssemblyFileVersion(GlobalAssemblyInfo.SimpleVersion)]
+[assembly: AssemblyInformationalVersion(GlobalAssemblyInfo.InformationalVersion)]
+
+//// AssemblyVersion = full version info, since it's used to determine agents versions
+//[assembly: AssemblyVersion(Xamarin.ThisAssembly.Version)]
+//// FileVersion = release-like simple version (i.e. 3.11.2 for cycle 5, SR2).
+//[assembly: AssemblyFileVersion(Xamarin.ThisAssembly.SimpleVersion)]
+//// InformationalVersion = full version + branch + commit sha.
+//[assembly: AssemblyInformationalVersion(Xamarin.ThisAssembly.InformationalVersion)]
+
 [assembly: AssemblyTitle("Cogworks.ExamineInspector")]
 [assembly: AssemblyDescription("This project is effectively a web based cut down LUKE. It allows you to query your examine indexes in the umbraco backoffice.")]
 [assembly: AssemblyCompany("Cogworks")]
 [assembly: AssemblyProduct("Cogworks.ExamineInspector")]
-[assembly: AssemblyCopyright("Copyright © 2017")]
-
+[assembly: AssemblyCopyright("Copyright Â© 2017")]

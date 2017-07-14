@@ -2,6 +2,7 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/xi37v81yqo7vhg4d/branch/master?svg=true)](https://ci.appveyor.com/project/Cogworks/examineinspector/branch/master)
 [![NuGet release](https://img.shields.io/nuget/v/Cogworks.ExamineInspector.svg)](https://www.nuget.org/packages/Cogworks.ExamineInspector)
+[![NuGet](https://img.shields.io/nuget/dt/Cogworks.ExamineInspector.svg)](https://www.nuget.org/packages/Cogworks.ExamineInspector)
 [![Our Umbraco project page](https://img.shields.io/badge/our-umbraco-orange.svg)](https://our.umbraco.org/projects/backoffice-extensions/examine-inspector/)
 
 This project is effectively a web based cut down LUKE. It allows you to query your examine indexes in the umbraco backoffice.
