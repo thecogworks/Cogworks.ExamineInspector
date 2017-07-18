@@ -8,14 +8,14 @@
     <owners>$author$</owners>
     <licenseUrl>https://github.com/thecogworks/examineinspector/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/thecogworks/examineinspector</projectUrl>
-    <iconUrl>https://www.thecogworks.co.uk</iconUrl>
+    <iconUrl>https://our.umbraco.org/media/wiki/271256/636359763292663953_examine-inspectorpng.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>$copyright$</copyright>
     <tags>Umbraco Search Examine Inspector</tags>
     <dependencies>
-      <dependency id="UmbracoCms.Core" version="7.6.3" />
-      <dependency id="Examine" version="0.1.83" />
+      <dependency id="UmbracoCms.Core" version="7.4.0" />
+      <dependency id="Examine" version="0.1.84" />
     </dependencies>
   </metadata>
   <files>

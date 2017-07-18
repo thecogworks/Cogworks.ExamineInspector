@@ -227,13 +227,10 @@ namespace Cogworks.ExamineInspector.Services
             var results = _searcher.Search(filter);
             var fieldKeys = new List<string>();
 
-            //this cast is just to get the lucene doc ids examine gives us umbraco node ids as docids we do not want that
-            var examineSearchResults = (SearchResults)results;
-
             for (var i = 0; i < results.Count(); i++)
             {
                 var searchResult = results.ElementAt(i);
-                var docId = examineSearchResults.TopDocs.ScoreDocs[i].doc;
+                var docId = searchResult.DocId;
 
                 searchResult.Fields.Add("docId", docId.ToString());
                 searchResult.Fields.Add("score", searchResult.Score.ToString());

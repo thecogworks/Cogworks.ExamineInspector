@@ -16,7 +16,6 @@
   color: #ffffff;
 }
 #examineInspector h3 {
-  width: 217px;
   height: 32px;
   font-size: 26.3px;
   font-weight: bold;
@@ -24,7 +23,7 @@
   margin-bottom: 18px;
 }
 #examineInspector select {
-  width: 362px;
+  width: 376px;
   height: 30px;
   border-radius: 4px;
   display: block;
@@ -314,6 +313,7 @@
 #examineInspector #searchTab .checkbox-container label {
   margin-right: 10px;
   font-weight: normal;
+  display: inline;
 }
 #examineInspector #searchTab .checkbox-container label.fields-to-display {
   font-weight: bold;
