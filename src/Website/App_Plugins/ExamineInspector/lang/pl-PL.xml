@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="pl" intName="Polish" localName="polski" lcid="21" culture="pl-PL">
+  <creator>
+    <name>Marcin Zajkowski @ The Cogworks</name>
+    <link>https://thecogworks.com</link>
+  </creator>
+  <area alias="examineInspector">
+    <key alias="chooseIndexOption">Wybierz opcje indeksu</key>
+    <key alias="selectIndexLabel">-- Wybierz indeks --</key>
+
+    <key alias="overview">Przegląd</key>
+    <key alias="viewing">Indeks: </key>
+    <key alias="path">Ścieżka: </key>
+    <key alias="noOfFields">Liczba pól</key>
+    <key alias="noOfDocuments">Liczba dokumentów</key>
+    <key alias="noOfTerms">Liczba wyrażeń</key>
+    <key alias="noOfTermsToShow">Liczba widocznych wyrażeń</key>
+    <key alias="display">Pokaż</key>
+    <key alias="availableFields">Dostępne pola</key>
+    <key alias="namesField">Nazwy</key>
+    <key alias="selectAll">Zaznacz wszystko</key>
+    <key alias="showingTopTerms">Podgląd topowych wyrażeń</key>
+    <key alias="selectAvailableFields">Wybierz jaka ilość wyrażeń ma być wyświetlana na poniższej liście</key>
+
+    <key alias="usingDocId">Używany DocId:</key>
+    <key alias="results">Wyniki</key>
+    <key alias="moreInfo">Zaznacz pojedynczy wiersz aby dowiedzieć się więcej</key>
+    <key alias="documentInfo">Informacje o dokumencie</key>
+    <key alias="search">Wyszukaj</key>
+    <key alias="indexFiles">Pliki indeksu</key>
+    <key alias="analyse">Analizuj</key>
+    <key alias="analyser">Analizator</key>
+    <key alias="defaultField">Domyślne pole</key>
+    <key alias="chooseAnalyserOption">-- Wybierz analizator --</key>
+    <key alias="chooseDefaultField">-- Wybierz domyślne pole --</key>
+    <key alias="luceneQuery">Wprowadź zapytanie  lucene</key>
+    <key alias="query">Zapytanie</key>
+    <key alias="fieldsToDisplay">Pola do wyświetlenia</key>
+    <key alias="selectFieldsToDisplay">-- Wybierz pola do wyświetlenia --</key>
+    <key alias="noResults">Brak wyników wyszukiwania.</key>
+
+    <key alias="totalIndexSize">Całkowity rozmiar indeksu:</key>
+    <key alias="fileName">Nazwa pliku</key>
+    <key alias="fileSize">Rozmiar pliku</key>
+
+    <key alias="enterTextToAnalyse">Wprowadź tekst do analizy</key>
+    <key alias="generatedTokens">Wygenerowane tokeny</key>
+  </area>
+</language>
