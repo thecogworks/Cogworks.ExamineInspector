@@ -333,6 +333,16 @@
   <ItemGroup>
     <None Include="Web\UI\App_Plugins\ExamineInspector\dashboard\filters\examineinspector.filters.js" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Web\UI\App_Plugins\ExamineInspector\lang\en-US.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web\UI\App_Plugins\ExamineInspector\lang\pl-PL.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy /S /H /Y /I /E "$(ProjectDir)Web\UI\*.*" "$(ProjectDir)..\Website\"</PostBuildEvent>
