@@ -3,7 +3,7 @@
         <div class="span9">
 
             <label>
-                <localize key="examineInspector_totalIndexSize">Total Index Size:</localize> <span>{{dashboardController.files.selectedIndexTotalFileSize}} Bytes </span>
+                <localize key="examineInspector_totalIndexSize">Total Index Size:</localize> <span>{{dashboardController.files.selectedIndexTotalFileSize}}</span>
             </label>
 
             <table class="table-bordered table-condensed table-striped">
@@ -19,7 +19,7 @@
                             {{file.fileName}}
                         </td>
                         <td>
-                            {{file.fileSize}} bytes
+                            {{dashboardController.index.niceBytes(file.fileSize)}}
                         </td>
                     </tr>
                 </tbody>

@@ -7,3 +7,6 @@ Examine Inspector log
 			   - Examine upgraded to 0.1.84
 			   - ExamineInspector identity added
 			   - More Screenshots!!! (@warrenbuckley suggestion)
+- 1.0.0		   - GitInfo upgraded to 2.0.6
+			   - Examine upgraded to 0.1.88
+			   - Grunt task is now setting the correct tag to the packages.

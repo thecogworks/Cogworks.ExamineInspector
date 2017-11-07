@@ -353,6 +353,8 @@
         }
 
         ///////////////////////////////////Index Files/////////////////////////////////
+        const units = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        vm.index = {};
 
         function getSelectedIndexTotalFileSize(indexFiles) {
             var fileSizeTotal = 0;
@@ -360,8 +362,21 @@
             for (var i = 0; i < indexFiles.length; i++) {
                 fileSizeTotal += indexFiles[i].fileSize;
             }
-            vm.files.selectedIndexTotalFileSize = fileSizeTotal;
+
+            vm.files.selectedIndexTotalFileSize = vm.index.niceBytes(fileSizeTotal);
         };
+
+        vm.index.niceBytes = function (x) {
+            var l = 0;
+            var n = parseInt(x, 10) || 0;
+
+            while (n >= 1024) {
+                n = n / 1024;
+                l++;
+            }
+
+            return (n.toFixed(n >= 10 || l < 1 ? 0 : 1) + ' ' + units[l]);
+        }
 
         ///////////////////////////////////Analyse/////////////////////////////////
         vm.analyse = {};

@@ -13,12 +13,8 @@ module.exports = function(grunt) {
     var releaseDir = 'release/',
         releaseFilesDir = releaseDir + 'files/';
 
-    // load information about the assembly
-    var assembly = grunt.file.readJSON(projectDir + 'Properties/AssemblyInfo.json');
-
-    // get the version of the package
-    var version = assembly.informationalVersion ? assembly.informationalVersion : assembly.version;
-
+	var version = grunt.option('setversion') || opts.setVersion;
+	
     grunt.initConfig({
         pkg: pkg,
         clean: {
@@ -83,19 +79,15 @@ module.exports = function(grunt) {
 				}
             }
         },
-		bump: {	
+		bump: {				
 			options: {
-				files: ['package.json','src/Cogworks.ExamineInspector/Properties/AssemblyInfo.json'],
+				files: ['package.json'],
 				commit: false,
-				createTag: true,
-				tagName: '%VERSION%',
-				tagMessage: '%VERSION%',
+				createTag: false,
 				push: false,
-				pushTo: 'origin',
 				globalReplace: true,
 				regExp: false
-			}
-			
+			}			
 		},
 		msbuild: {
 			dev: {
@@ -117,10 +109,10 @@ module.exports = function(grunt) {
 			commit: {
 				options: {
 					a: true,
-					m: 'Woot!! '
+					m: 'Release ' + version
 				}
 			},
-			pushOrigin: {
+			pushOriginWork: {
 			  options: {
 				simple: {
 				  cmd: 'push',
@@ -143,6 +135,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('dev', ['copy', 'zip', 'umbracoPackage', 'nugetpack']);
 	
-	grunt.registerTask('default', ['bump','msbuild','git:commit','tag','git:pushOrigin','dev']);
-
+	grunt.registerTask('default', ['bump','msbuild','git:commit','tag','git:pushOriginWork','dev']);
 };
